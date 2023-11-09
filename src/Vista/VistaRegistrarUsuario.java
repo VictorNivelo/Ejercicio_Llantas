@@ -31,6 +31,7 @@ public class VistaRegistrarUsuario extends javax.swing.JFrame {
     
     private void CargarTabla(){
         mtp.setPersonas(personaControlador.getPersonas());
+        cbxRol.setSelectedIndex(-1);
         tblUsuarios.setModel(mtp);
         tblUsuarios.updateUI();
     }
@@ -41,7 +42,7 @@ public class VistaRegistrarUsuario extends javax.swing.JFrame {
         txtDireccion.setText("");
         txtNumeroIdentificacion.setText("");
         CargarTabla();
-        cbxRol.setSelectedIndex(0);
+        cbxRol.setSelectedIndex(-1);
         personaControlador.setPersona(null);
 
     }
@@ -292,8 +293,11 @@ public class VistaRegistrarUsuario extends javax.swing.JFrame {
 
     private void btnRegistrarNuevoUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarNuevoUsuarioActionPerformed
         // TODO add your handling code here:"
-        if(cbxTipoIdentificacion.getSelectedIndex() == -1){
-            JOptionPane.showMessageDialog(null, "El tipo de identificacion esta vacio","CAMPO VACIO", JOptionPane.WARNING_MESSAGE);
+        if(cbxRol.getSelectedIndex() == -1){
+            JOptionPane.showMessageDialog(null, "El tipo de rol no esta seleccionado","CAMPO VACIO", JOptionPane.WARNING_MESSAGE);
+        }
+        else if(cbxTipoIdentificacion.getSelectedIndex() == -1){
+            JOptionPane.showMessageDialog(null, "El tipo de identificacion no esta seleccionado","CAMPO VACIO", JOptionPane.WARNING_MESSAGE);
         }
         else if(txtNumeroIdentificacion.getText().isEmpty()){
             JOptionPane.showMessageDialog(null, "El campo de identificacion esta vacio","CAMPO VACIO", JOptionPane.WARNING_MESSAGE);
