@@ -118,11 +118,28 @@ public class VistaRegistrarUsuario extends javax.swing.JFrame {
 
         jLabel3.setText("Nombre");
 
+        txtNombre.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtNombreKeyTyped(evt);
+            }
+        });
+
         jLabel4.setText("Apellido");
+
+        txtApellido.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtApellidoKeyTyped(evt);
+            }
+        });
 
         jLabel5.setText("Numero Identificacion");
 
         txtNumeroIdentificacion.setToolTipText("");
+        txtNumeroIdentificacion.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtNumeroIdentificacionKeyTyped(evt);
+            }
+        });
 
         jLabel6.setText("Dirreccion");
 
@@ -130,7 +147,7 @@ public class VistaRegistrarUsuario extends javax.swing.JFrame {
 
         jLabel8.setText("Contraseña");
 
-        btnRegistrarNuevoUsuario.setText("REGISTRAR");
+        btnRegistrarNuevoUsuario.setText("REGISTRAR USUARIO");
         btnRegistrarNuevoUsuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnRegistrarNuevoUsuarioActionPerformed(evt);
@@ -185,10 +202,6 @@ public class VistaRegistrarUsuario extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(btnRegresar)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnRegistrarNuevoUsuario))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addComponent(jLabel8, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -208,7 +221,11 @@ public class VistaRegistrarUsuario extends javax.swing.JFrame {
                             .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(txtContrasena))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(btnRegresar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnRegistrarNuevoUsuario)))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -255,7 +272,7 @@ public class VistaRegistrarUsuario extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnRegistrarNuevoUsuario)
                     .addComponent(btnRegresar))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(9, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -283,11 +300,73 @@ public class VistaRegistrarUsuario extends javax.swing.JFrame {
 
     private void btnRegistrarNuevoUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarNuevoUsuarioActionPerformed
         // TODO add your handling code here:
-        Guardar();
+        if(txtNumeroIdentificacion.getText().isEmpty()){
+            JOptionPane.showMessageDialog(null, "El campo de identificacion esta vacio","CAMPO VACIO", JOptionPane.WARNING_MESSAGE);
+        }
+        else if(txtNombre.getText().isEmpty()){
+            JOptionPane.showMessageDialog(null, "El campo de nombre esta vacio","CAMPO VACIO", JOptionPane.WARNING_MESSAGE);
+        }
+        else if(txtApellido.getText().isEmpty()){
+            JOptionPane.showMessageDialog(null, "El campo de apellido esta vacio","CAMPO VACIO", JOptionPane.WARNING_MESSAGE);
+        }
+        else if(txtDireccion.getText().isEmpty()){
+            JOptionPane.showMessageDialog(null, "El campo de direccion esta vacio","CAMPO VACIO", JOptionPane.WARNING_MESSAGE);
+        }else{
+            Guardar();
+        }
+        
 //        VistaAlmacen abrir = new VistaAlmacen();
 //        abrir.setVisible(true);
 //        this.setVisible(false);
     }//GEN-LAST:event_btnRegistrarNuevoUsuarioActionPerformed
+
+    private void txtNumeroIdentificacionKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNumeroIdentificacionKeyTyped
+        // TODO add your handling code here:
+        
+        int key = evt.getKeyChar();
+        boolean delete = key == 8;
+        
+        Character c = evt.getKeyChar();
+        
+        if(!(Character.isDigit(c) || delete)){
+            evt.consume();
+            JOptionPane.showMessageDialog(null, "Solo ingreso de numeros", "TEXTO NO VALIDO", JOptionPane.WARNING_MESSAGE);
+        }
+        if(txtNumeroIdentificacion.getText().length()>=10){
+            evt.consume();
+        }
+    }//GEN-LAST:event_txtNumeroIdentificacionKeyTyped
+
+    private void txtNombreKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNombreKeyTyped
+        // TODO add your handling code here:
+        int key = evt.getKeyChar();
+
+        boolean mayusculas = key >= 65 && key <= 90;
+        boolean minusculas = key >= 97 && key <= 122;
+        boolean espacio = key == 32;
+        boolean delete = key == 8;
+
+        if (!(minusculas || mayusculas || espacio ||delete)) {
+            evt.consume();
+            JOptionPane.showMessageDialog(null, "Solo ingreso de letras", "TEXTO NO VALIDO", JOptionPane.WARNING_MESSAGE);
+        }
+        
+    }//GEN-LAST:event_txtNombreKeyTyped
+
+    private void txtApellidoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtApellidoKeyTyped
+        // TODO add your handling code here:
+        int key = evt.getKeyChar();
+
+        boolean mayusculas = key >= 65 && key <= 90;
+        boolean minusculas = key >= 97 && key <= 122;
+        boolean espacio = key == 32;
+        boolean delete = key == 8;
+
+        if (!(minusculas || mayusculas || espacio ||delete)) {
+            evt.consume();
+            JOptionPane.showMessageDialog(null, "Solo ingreso de letras", "TEXTO NO VALIDO", JOptionPane.WARNING_MESSAGE);
+        }
+    }//GEN-LAST:event_txtApellidoKeyTyped
 
     /**
      * @param args the command line arguments
