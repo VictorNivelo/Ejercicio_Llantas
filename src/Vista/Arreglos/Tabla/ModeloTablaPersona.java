@@ -52,7 +52,6 @@ public class ModeloTablaPersona extends AbstractTableModel {
             case 4:
                 return (p != null) ? p.getDireccion() : "";
 
-
             default:
                 return null;
 
