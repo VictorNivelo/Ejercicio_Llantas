@@ -23,10 +23,10 @@ public class VistaRegistrarUsuario extends javax.swing.JFrame {
      */
     public VistaRegistrarUsuario() {
         initComponents();
+        cbxTipoIdentificacion.setSelectedIndex(-1);
         UtilVista.CargarComboRoles(cbxRol);
         CargarTabla();
         this.setLocationRelativeTo(null);
-        
     }
     
     private void CargarTabla(){
@@ -299,8 +299,11 @@ public class VistaRegistrarUsuario extends javax.swing.JFrame {
     }//GEN-LAST:event_btnRegresarActionPerformed
 
     private void btnRegistrarNuevoUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarNuevoUsuarioActionPerformed
-        // TODO add your handling code here:
-        if(txtNumeroIdentificacion.getText().isEmpty()){
+        // TODO add your handling code here:"
+        if(cbxTipoIdentificacion.getSelectedIndex() == -1){
+            JOptionPane.showMessageDialog(null, "El tipo de identificacion esta vacio","CAMPO VACIO", JOptionPane.WARNING_MESSAGE);
+        }
+        else if(txtNumeroIdentificacion.getText().isEmpty()){
             JOptionPane.showMessageDialog(null, "El campo de identificacion esta vacio","CAMPO VACIO", JOptionPane.WARNING_MESSAGE);
         }
         else if(txtNombre.getText().isEmpty()){
