@@ -21,6 +21,20 @@ public class ListaDinamica<E> {
         ultimo = null;
         Longitud = 0;
     }
+
+    public Nodo<E> getCabezera() {
+        return cabezera;
+    }
+
+    public Nodo<E> getUltimo() {
+        return ultimo;
+    }
+
+    public Integer getLongitud() {
+        return Longitud;
+    }
+    
+    
     
     public Boolean EstaVacio(){
         return(cabezera == null || Longitud.intValue() == 0 );
@@ -123,11 +137,13 @@ public class ListaDinamica<E> {
 
     @Override
     public String toString() {
-        StringBuilder SB = new StringBuilder("Datos de lista");
+        StringBuilder SB = new StringBuilder("Datos de lista \n");
         try {
+            EstaVacio();
             Nodo<E> ayuda = cabezera;
             while(ayuda != null){
                 SB.append(ayuda.getInfo()).append("\n");
+                ayuda = ayuda.getSiguiente();
             }
         } 
         catch (Exception e) {
@@ -136,5 +152,28 @@ public class ListaDinamica<E> {
         return SB.toString();
     }
     
+//    public static void main(String[] args){
+//        try {
+//            ListaDinamica<Integer> list = new ListaDinamica<>();
+//            
+//            for(int i = 0; 1 < 5; i++){
+//                double aux = (int )(Math.random()*1000);
+//                list.Agregar(aux);
+//            }
+//            
+//            System.out.println("El tamaño es: "+list.getLongitud());
+//            list.Agregar(5,4);
+//            //test
+//            System.out.println("El tamaño es: "+list.getLongitud());
+//            System.out.println(list);
+//            System.out.println("El dato es: "+list.ObtenerInfo(Integer.SIZE));
+//            
+//        }
+//        catch (Exception e) {
+//            System.out.println(e.getMessage());
+//        }
+//        
+//        //pasar a listas
+//    }
     
 }
