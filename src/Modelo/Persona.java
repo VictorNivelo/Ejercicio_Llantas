@@ -16,6 +16,8 @@ public class Persona {
     private String Apellido;
     private String Direccion;
     private Rol id_rol;
+    
+    
 
     public String getTipoIde() {
         return TipoIde;

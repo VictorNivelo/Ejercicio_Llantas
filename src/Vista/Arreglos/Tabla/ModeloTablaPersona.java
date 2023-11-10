@@ -32,7 +32,7 @@ public class ModeloTablaPersona extends AbstractTableModel {
     @Override
     public int getColumnCount() {
 //        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-        return 5;
+        return 6;
     }
 
     @Override
@@ -41,15 +41,17 @@ public class ModeloTablaPersona extends AbstractTableModel {
         Persona p = personas[i];
 
         switch (i1) {
-            case 0:
-                return (p != null) ? p.getTipoIde() : "";
+            case 0: 
+                return (p != null) ? p.getId_rol().getNombre_rol() : "";
             case 1:
-                return (p != null) ? p.getDNI() : "";
+                return (p != null) ? p.getTipoIde() : "";
             case 2:
-                return (p != null) ? p.getNombre() : "";
+                return (p != null) ? p.getDNI() : "";
             case 3:
-                return (p != null) ? p.getApellido() : "";
+                return (p != null) ? p.getNombre() : "";
             case 4:
+                return (p != null) ? p.getApellido() : "";
+            case 5:
                 return (p != null) ? p.getDireccion() : "";
 
             default:
@@ -61,15 +63,17 @@ public class ModeloTablaPersona extends AbstractTableModel {
     @Override
     public String getColumnName(int column) {
         switch (column) {
-            case 0:
-                return "Tipo identificacion";
+            case 0: 
+                return "Tipo de rol";
             case 1:
-                return "Numero identidicacion";
+                return "Tipo identificacion";
             case 2:
-                return "Nombre";
+                return "Numero identidicacion";
             case 3:
-                return "Apellido";
+                return "Nombre";
             case 4:
+                return "Apellido";
+            case 5:
                 return "Direccion";
 
             default:

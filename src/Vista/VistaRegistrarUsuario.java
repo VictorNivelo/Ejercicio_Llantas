@@ -5,7 +5,10 @@
 package Vista;
 
 import Controlador.PersonaControlador;
+import Controlador.RolControlador;
 import Controlador.Tda.listas.ListaDinamica;
+import Modelo.Persona;
+import Modelo.Rol;
 import Vista.Arreglos.Tabla.ModeloTablaPersona;
 import Vista.Arreglos.Util.UtilVista;
 import javax.swing.JOptionPane;
@@ -19,6 +22,7 @@ public class VistaRegistrarUsuario extends javax.swing.JFrame {
     private PersonaControlador personaControlador = new PersonaControlador(10);
     private ModeloTablaPersona mtp = new ModeloTablaPersona();
     private ListaDinamica LD = new ListaDinamica();
+
 
     /**
      * Creates new form VistaRegistrarUsuario
@@ -314,9 +318,21 @@ public class VistaRegistrarUsuario extends javax.swing.JFrame {
         else if(txtDireccion.getText().isEmpty()){
             JOptionPane.showMessageDialog(null, "El campo de direccion esta vacio","CAMPO VACIO", JOptionPane.WARNING_MESSAGE);
         }else{
+            int i = 0;
+            String TipoRol = cbxRol.getSelectedItem().toString();
+            String TipoId = cbxTipoIdentificacion.getSelectedItem().toString();
+            String NumeroId = txtNumeroIdentificacion.getText();
+            String Nombre = txtNombre.getText();
+            String Apellido = txtApellido.getText();
+            String Direccion = txtDireccion.getText();
+            
+            
+            
             //CORREGIR
-            LD.Agregar(evt);
+            
             Guardar();
+            PersonaControlador Usuario = new PersonaControlador(10);
+            LD.Agregar(Usuario);
             System.out.println(""+LD);
         }
         
