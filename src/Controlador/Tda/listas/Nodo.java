@@ -19,9 +19,9 @@ public class Nodo<E> {
 
     }
 
-    public Nodo(E info, Nodo<E> next) {
+    public Nodo(E info, Nodo<E> siguiente) {
         this.info = info;
-        this.Siguiente = next;
+        this.Siguiente = siguiente;
 
     }
 
@@ -39,11 +39,12 @@ public class Nodo<E> {
         this.info = info;
     }
 
-    public Nodo<E> getNext() {
+    public Nodo<E> getSiguiente() {
         return Siguiente;
     }
 
-    public void setNext(Nodo<E> next) {
-        this.Siguiente = next;
+    public void setSiguiente(Nodo<E> siguiente) {
+        this.Siguiente = siguiente;
     }
+    
 }

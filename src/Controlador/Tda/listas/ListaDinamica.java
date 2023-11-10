@@ -53,7 +53,7 @@ public class ListaDinamica<E> {
         }
         else{
             Ayuda = new Nodo<>(info, null);
-            ultimo.setNext(Ayuda);
+            ultimo.setSiguiente(Ayuda);
             ultimo = Ayuda;
             Longitud++;
         }
@@ -99,7 +99,7 @@ public class ListaDinamica<E> {
             int contador =0;
             while(contador < indice.intValue()){
                 contador++;
-                Buscar = Buscar.getNext();
+                Buscar = Buscar.getSiguiente();
             }
             return Buscar;
         }
@@ -116,8 +116,25 @@ public class ListaDinamica<E> {
             Nodo<E> BuscarPrevio = ObtenerNodo(indice - 1);
             Nodo<E> Buscar= ObtenerNodo(indice);
             Nodo<E> Ayuda = new Nodo<>(info, Buscar);
-            BuscarPrevio.setNext(Ayuda);
+            BuscarPrevio.setSiguiente(Ayuda);
             Longitud++;
         }
     }
+
+    @Override
+    public String toString() {
+        StringBuilder SB = new StringBuilder("Datos de lista");
+        try {
+            Nodo<E> ayuda = cabezera;
+            while(ayuda != null){
+                SB.append(ayuda.getInfo()).append("\n");
+            }
+        } 
+        catch (Exception e) {
+            SB.append(e.getMessage());
+        }
+        return SB.toString();
+    }
+    
+    
 }
