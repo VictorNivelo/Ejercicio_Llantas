@@ -43,6 +43,7 @@ public class VistaRegistrarUsuario extends javax.swing.JFrame {
         txtNumeroIdentificacion.setText("");
         CargarTabla();
         cbxRol.setSelectedIndex(-1);
+        cbxTipoIdentificacion.setSelectedIndex(-1);
         personaControlador.setPersona(null);
 
     }
