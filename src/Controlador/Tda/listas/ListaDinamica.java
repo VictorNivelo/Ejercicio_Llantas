@@ -4,7 +4,7 @@
  */
 package Controlador.Tda.listas;
 
-import Controlador.Ecepciones.EstaVacia;
+import Controlador.Tda.listas.Exepciones.EstaVacia;
 import javax.swing.JOptionPane;
 
 /**
@@ -120,6 +120,4 @@ public class ListaDinamica<E> {
             Longitud++;
         }
     }
-    
-    
 }
