@@ -317,6 +317,8 @@ public class VistaRegistrarUsuario extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "El campo de direccion esta vacio","CAMPO VACIO", JOptionPane.WARNING_MESSAGE);
         }
         else{
+            
+            
             Guardar();
             
         }
