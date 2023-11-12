@@ -12,10 +12,10 @@ import Modelo.Persona;
  */
 public class PersonaControlador {
     private Persona persona;
-    private Persona[] personas;
+    private Persona[] MatrizPersona;
     
     public PersonaControlador(Integer tamanio) {
-        this.personas = new Persona[tamanio];
+        this.MatrizPersona = new Persona[tamanio];
     }
     
     //metodo que permite guardar
@@ -23,9 +23,10 @@ public class PersonaControlador {
         Integer pos = VerificarPosicion();
         if (pos > -1) {
             persona.setId_Persona(pos + 1);
-            personas[VerificarPosicion()] = persona;
+            MatrizPersona[VerificarPosicion()] = persona;
             return true;
-        } else {
+        } 
+        else {
             return false;
         }
     }
@@ -46,8 +47,8 @@ public class PersonaControlador {
         
         Integer band = -1;
         
-        for(int i=0; i < this.personas.length; i++){
-            if(this.personas[i] ==null){
+        for(int i = 0; i < this.MatrizPersona.length; i++){
+            if(this.MatrizPersona[i] == null){
                 band = i;
                 break;
             }
@@ -55,34 +56,34 @@ public class PersonaControlador {
         return band;
     }
     
-    public void Imprimir(){
-        for(int i = 0 ;i > this.getPersonas().length; i++){
-            System.out.println(getPersonas()[i]);
+    public void Imprimir() {
+        for (int i = 0; i > this.getMatrizPersona().length; i++) {
+            System.out.println(getMatrizPersona()[i]);
         }
     }
-    
-     public Persona getPersona() {
-        if(persona == null){
+
+    public Persona getPersona() {
+        if (persona == null) {
             persona = new Persona();
         }
         return persona;
     }
 
     public void setPersona(Persona persona) {
-        this.persona = persona;
+        this.persona = persona ;
     }
 
-    public Persona[] getPersonas() {
-        return personas;
+    public Persona[] getMatrizPersona() {
+        return MatrizPersona;
     }
 
-    public void setPersonas(Persona[] personas) {
-        this.personas = personas;
-    }
-
-    @Override
-    public String toString() {
-        return "DNI: " + getPersona().getDNI() + " Apellidos: " + getPersona().getApellido() + " Nombres: " + getPersona().getNombre();
+    public void setMatrizPersona(Persona[] MatrizPersona) {
+        this.MatrizPersona = MatrizPersona;
     }
     
+//    @Override
+//    public String toString() {
+//        return "Id_Persona: "+ getPersona().getId_Persona() + "Tipo DNI: "+ getPersona().getTipoDNI()+"Numero DNI: " + getPersona().getDNI() + " Nombres: " + getPersona().getNombre()+ " Apellido: " + getPersona().getApellido()+"Direccion: "+ getPersona().getDireccion();
+//    }
+      
 }

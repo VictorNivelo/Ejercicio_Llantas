@@ -5,10 +5,8 @@
 package Vista;
 
 import Controlador.PersonaControlador;
-import Controlador.RolControlador;
 import Controlador.Tda.listas.ListaDinamica;
 import Modelo.Persona;
-import Modelo.Rol;
 import Vista.Arreglos.Tabla.ModeloTablaPersona;
 import Vista.Arreglos.Util.UtilVista;
 import javax.swing.JOptionPane;
@@ -19,9 +17,9 @@ import javax.swing.JOptionPane;
  */
 public class VistaRegistrarUsuario extends javax.swing.JFrame {
     
-    private PersonaControlador personaControlador = new PersonaControlador(10);
+    private PersonaControlador personaControl = new PersonaControlador(26);
     private ModeloTablaPersona mtp = new ModeloTablaPersona();
-    private ListaDinamica LD = new ListaDinamica();
+    private ListaDinamica ListaD = new ListaDinamica();
 
 
     /**
@@ -29,14 +27,14 @@ public class VistaRegistrarUsuario extends javax.swing.JFrame {
      */
     public VistaRegistrarUsuario() {
         initComponents();
-        cbxTipoIdentificacion.setSelectedIndex(-1);
+        this.setLocationRelativeTo(null);   
         UtilVista.CargarComboRoles(cbxRol);
         CargarTabla();
-        this.setLocationRelativeTo(null);
     }
     
     private void CargarTabla(){
-        mtp.setPersonas(personaControlador.getPersonas());
+        mtp.setPersonas(personaControl.getMatrizPersona());
+        cbxTipoIdentificacion.setSelectedIndex(-1);
         cbxRol.setSelectedIndex(-1);
         tblUsuarios.setModel(mtp);
         tblUsuarios.updateUI();
@@ -47,10 +45,10 @@ public class VistaRegistrarUsuario extends javax.swing.JFrame {
         txtNombre.setText("");
         txtDireccion.setText("");
         txtNumeroIdentificacion.setText("");
-        CargarTabla();
         cbxRol.setSelectedIndex(-1);
         cbxTipoIdentificacion.setSelectedIndex(-1);
-        personaControlador.setPersona(null);
+        personaControl.setPersona(null);
+        CargarTabla();
 
     }
     
@@ -61,17 +59,17 @@ public class VistaRegistrarUsuario extends javax.swing.JFrame {
     
     private void Guardar(){
         if(Validar()){
-            personaControlador.getPersona().setTipoIde(cbxTipoIdentificacion.getSelectedItem().toString());
-            personaControlador.getPersona().setDNI(txtNumeroIdentificacion.getText());
-            personaControlador.getPersona().setNombre(txtNombre.getText());
-            personaControlador.getPersona().setApellido(txtApellido.getText());
-            personaControlador.getPersona().setDireccion(txtDireccion.getText());
-            personaControlador.getPersona().setId_rol(UtilVista.ObtenerRolControlador(cbxRol));
+            personaControl.getPersona().setTipoDNI(cbxTipoIdentificacion.getSelectedItem().toString());
+            personaControl.getPersona().setDNI(txtNumeroIdentificacion.getText());
+            personaControl.getPersona().setNombre(txtNombre.getText());
+            personaControl.getPersona().setApellido(txtApellido.getText());
+            personaControl.getPersona().setDireccion(txtDireccion.getText());
+            personaControl.getPersona().setId_rol(UtilVista.ObtenerRolControlador(cbxRol));
             
-            if(personaControlador.Guardar()){
+            if(personaControl.Guardar()){
                 JOptionPane.showMessageDialog(null, "Datos guardados", "Informacion", JOptionPane.INFORMATION_MESSAGE);
+                personaControl.setPersona(null);
                 CargarTabla();
-                personaControlador.setPersona(null);
                 Limpiar();
 //                personaControlador.Imprimir();
             }
@@ -317,23 +315,10 @@ public class VistaRegistrarUsuario extends javax.swing.JFrame {
         }
         else if(txtDireccion.getText().isEmpty()){
             JOptionPane.showMessageDialog(null, "El campo de direccion esta vacio","CAMPO VACIO", JOptionPane.WARNING_MESSAGE);
-        }else{
-            int i = 0;
-            String TipoRol = cbxRol.getSelectedItem().toString();
-            String TipoId = cbxTipoIdentificacion.getSelectedItem().toString();
-            String NumeroId = txtNumeroIdentificacion.getText();
-            String Nombre = txtNombre.getText();
-            String Apellido = txtApellido.getText();
-            String Direccion = txtDireccion.getText();
-            
-            
-            
-            //CORREGIR
-            
+        }
+        else{
             Guardar();
-            PersonaControlador Usuario = new PersonaControlador(10);
-            LD.Agregar(Usuario);
-            System.out.println(""+LD);
+            
         }
         
 //        VistaAlmacen abrir = new VistaAlmacen();

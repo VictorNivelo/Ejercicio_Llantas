@@ -47,4 +47,12 @@ public class Nodo<E> {
         this.Siguiente = siguiente;
     }
     
+    public String toString() {
+        if (info != null) {
+            return info.toString();
+        } 
+        else {
+            return null;
+        }
+    }
 }

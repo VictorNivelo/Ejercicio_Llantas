@@ -5,7 +5,6 @@
 package Controlador.Tda.listas;
 
 import Controlador.Tda.listas.Exepciones.EstaVacia;
-import javax.swing.JOptionPane;
 
 /**
  *
@@ -35,7 +34,7 @@ public class ListaDinamica<E> {
     }
     
     public Boolean EstaVacio(){
-        return(cabezera == null || Longitud.intValue() == 0 );
+        return(cabezera == null || Longitud == 0 );
     }
     
     private void AgregarCabeza(E info){
@@ -138,7 +137,9 @@ public class ListaDinamica<E> {
         StringBuilder SB = new StringBuilder("Datos de lista \n");
         try {
             EstaVacio();
+            
             Nodo<E> ayuda = cabezera;
+            
             while(ayuda != null){
                 SB.append(ayuda.getInfo()).append("\n");
                 ayuda = ayuda.getSiguiente();

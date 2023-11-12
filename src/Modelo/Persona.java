@@ -10,22 +10,12 @@ package Modelo;
  */
 public class Persona {
     private Integer Id_Persona;
-    private String TipoIde;
+    private String TipoDNI;
     private String DNI;
     private String Nombre;
     private String Apellido;
     private String Direccion;
     private Rol id_rol;
-    
-    
-
-    public String getTipoIde() {
-        return TipoIde;
-    }
-
-    public void setTipoIde(String TipoIde) {
-        this.TipoIde = TipoIde;
-    }
 
     public Integer getId_Persona() {
         return Id_Persona;
@@ -33,6 +23,22 @@ public class Persona {
 
     public void setId_Persona(Integer Id_Persona) {
         this.Id_Persona = Id_Persona;
+    }
+
+    public String getTipoDNI() {
+        return TipoDNI;
+    }
+
+    public void setTipoDNI(String TipoDNI) {
+        this.TipoDNI = TipoDNI;
+    }
+
+    public String getDNI() {
+        return DNI;
+    }
+
+    public void setDNI(String DNI) {
+        this.DNI = DNI;
     }
 
     public String getNombre() {
@@ -51,14 +57,6 @@ public class Persona {
         this.Apellido = Apellido;
     }
 
-    public String getDNI() {
-        return DNI;
-    }
-
-    public void setDNI(String DNI) {
-        this.DNI = DNI;
-    }
-
     public String getDireccion() {
         return Direccion;
     }
@@ -74,10 +72,10 @@ public class Persona {
     public void setId_rol(Rol id_rol) {
         this.id_rol = id_rol;
     }
-
+    
     @Override
     public String toString() {
-        return "Persona{" + "Id_Persona=" + Id_Persona + ", Nombre=" + Nombre + ", Apellido=" + Apellido + ", DNI=" + DNI + ", Direccion=" + Direccion + ", id_rol=" + id_rol + '}';
+        return "Id_Persona: " + Id_Persona + ", Tipo DNI: " + TipoDNI + ", Numero DNI: " + DNI + ", Nombre: " + Nombre + ", Apellido: " + Apellido + ", Direccion: " + Direccion + ", Rol: " + id_rol +"\n";
     }
     
 }

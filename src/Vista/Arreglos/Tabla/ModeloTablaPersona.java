@@ -44,7 +44,7 @@ public class ModeloTablaPersona extends AbstractTableModel {
             case 0: 
                 return (p != null) ? p.getId_rol().getNombre_rol() : "";
             case 1:
-                return (p != null) ? p.getTipoIde() : "";
+                return (p != null) ? p.getTipoDNI(): "";
             case 2:
                 return (p != null) ? p.getDNI() : "";
             case 3:
