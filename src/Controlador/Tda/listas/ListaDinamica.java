@@ -9,6 +9,7 @@ import Controlador.Tda.listas.Exepciones.EstaVacia;
 /**
  *
  * @author Invitado xd
+ * @param <E>
  */
 public class ListaDinamica<E> {
     private Nodo<E> cabezera;
